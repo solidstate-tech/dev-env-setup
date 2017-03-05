@@ -100,8 +100,6 @@ OS X comes with Ruby installed (Mavericks even gets version 2.0.0, previously it
 
 ~~~~
 $ brew install rbenv ruby-build rbenv-default-gems rbenv-gemset
-$ echo 'eval "$(rbenv init -)"' >> ~/Projects/config/env.sh
-$ sourcezsh
 ~~~~
 
 The package we just installed allow us to install different versions of Ruby and specify which version to use on a per project basis and globally. This is very useful to keep a consistent development environment if you need to work in a particular Ruby version.
