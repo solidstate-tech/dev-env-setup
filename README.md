@@ -33,6 +33,38 @@ $ echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
 ##iTerm2
 Since we're going to be spending a lot of time in the command-line, let's install a better terminal than the default one. Download and install [iTerm2](https://www.iterm2.com/).
 
+##Git and GitHub
+
+What's a developer without Git? To install, simply run:
+~~~~
+$ brew install git
+~~~~
+When done, to test that it installed fine you can run:
+
+~~~~
+$ git --version
+~~~~
+
+And  
+
+~~~~
+which git should output /usr/local/bin/git
+~~~~
+
+Next, we'll define your Git user (should be the same name and email you use for GitHub):
+
+~~~~
+$ git config --global user.name "Your Name Here"
+$ git config --global user.email "your_email@youremail.com"
+~~~~
+
+They will get added to your .gitconfig file.
+
+To push code to your GitHub repositories, we're going to use the recommended HTTPS method (versus SSH). So you don't have to type your username and password everytime, let's enable Git password caching as described here:
+
+~~~~
+$ git config --global credential.helper osxkeychain
+~~~~
 ##Zsh
 Install zsh and zsh completions using homebrew
 
@@ -49,9 +81,18 @@ Install oh-my-zsh on top of zsh to get additional functionality
 ~~~~
     
 Change default shell to zsh manually
-
 ~~~~
 chsh -s /usr/local/bin/zsh
+~~~~
+
+### Clone your first repo
+
+~~~~
+$ cd ~
+$ git clone https://github.com/vvdcect/devenvsetup.git
+$ cp ~/devenvsetup/.zshrc  ~/.zshrc
+$ cp ~/devenvsetup/.vimrc  ~/.vimrc 
+$ source ~/.zshrc
 ~~~~
 
 ##Ruby
@@ -157,39 +198,6 @@ To uninstall a package:
 
 ~~~~
 $ npm uninstall <package>
-~~~~
-
-##Git and GitHub
-
-What's a developer without Git? To install, simply run:
-~~~~
-$ brew install git
-~~~~
-When done, to test that it installed fine you can run:
-
-~~~~
-$ git --version
-~~~~
-
-And  
-
-~~~~
-which git should output /usr/local/bin/git
-~~~~
-
-Next, we'll define your Git user (should be the same name and email you use for GitHub):
-
-~~~~
-$ git config --global user.name "Your Name Here"
-$ git config --global user.email "your_email@youremail.com"
-~~~~
-
-They will get added to your .gitconfig file.
-
-To push code to your GitHub repositories, we're going to use the recommended HTTPS method (versus SSH). So you don't have to type your username and password everytime, let's enable Git password caching as described here:
-
-~~~~
-$ git config --global credential.helper osxkeychain
 ~~~~
 
 ##Heroku
