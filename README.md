@@ -201,7 +201,6 @@ $ npm uninstall <package>
 ~~~~
 
 ##Heroku
-Heroku, if you're not already familiar with it, is a Platform-as-a-Service (PaaS) that makes it really easy to deploy your apps online. There are other similar solutions out there, but Heroku was among the first and is currently the most popular. Not only does it make a developer's life easier, but I find that having Heroku deployment in mind when building an app forces you to follow modern app development best practices.
 
 ##Install
 ~~~~
