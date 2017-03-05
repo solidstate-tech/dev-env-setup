@@ -105,8 +105,8 @@ $ brew install rbenv ruby-build rbenv-default-gems rbenv-gemset
 The package we just installed allow us to install different versions of Ruby and specify which version to use on a per project basis and globally. This is very useful to keep a consistent development environment if you need to work in a particular Ruby version.
 
 ~~~~~
-$ rbenv install 2.1.1
-$ rbenv global 2.1.1
+$ rbenv install 2.4.0
+$ rbenv global 2.4.0
 ~~~~~
 
 Install bundler. Bundler manages an application's dependencies, kind of like a shopping list of other libraries the application needs to work.
