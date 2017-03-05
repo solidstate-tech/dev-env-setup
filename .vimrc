@@ -23,7 +23,5 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 set bomb
 set binary
-
-syntax on
 set ruler
 set number
