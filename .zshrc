@@ -2,24 +2,23 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=/usr/local/share/npm/bin:$PATH
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/:usr/local/pgsql/bin$PATH"
+export PATH="$PATH:$GOPATH/bin"
 export EDITOR='vim'
-#Pyenv and pyenv-virtualenv
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/bin:$PATH"
-plugin=s(git bundler osx rake ruby)
+export PATH="$HOME/.rbenv/bin:$PATH" plugin=s(git osx)
+eval "$(docker-machine env)"
  #Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-
- #Set name of the theme to load. Optionally, if you set this to "random"
- export LC_ALL=en_US.UTF-8
- export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="cobalt2"
-
+ZSH_THEME="cloud"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -64,7 +63,6 @@ ZSH_THEME="cobalt2"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -93,3 +91,30 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias zshconfig="vim  ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias ve="source env/bin/activate"
+alias be="bundle exec"
+alias ao="atom open"
+ export NVM_DIR="/Users/stephensinniah/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use
+    fi
+  elif [ "$node_version" != "$(nvm version default)" ]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
