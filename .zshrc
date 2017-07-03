@@ -5,6 +5,7 @@ export PATH="/:usr/local/pgsql/bin$PATH"
 export PATH="$PATH:$GOPATH/bin"
 export EDITOR='vim'
 export NVM_DIR="$HOME/.nvm"
+export PROMPT
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH" plugin=s(git osx)
@@ -16,7 +17,7 @@ export LANG=en_US.UTF-8
 
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="cloud"
+ZSH_THEME="spaceship"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 # Uncomment the following line to use case-sensitive completion.
@@ -93,10 +94,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 alias zshconfig="vim  ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias ve="source env/bin/activate"
 alias be="bundle exec"
-alias ao="atom open"
- export NVM_DIR="/Users/stephensinniah/.nvm"
+alias pg-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+alias pg-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist" 
+export NVM_DIR="/Users/stephensinniah/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -118,3 +119,9 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+alias st='/usr/bin/sublime-text'
+DEFAULT_USER=sds
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+source "/Users/stephensinniah/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
