@@ -14,7 +14,7 @@ eval "$(docker-machine env)"
 export ZSH=$HOME/.oh-my-zsh
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
+export TLY_BACKUPS="/Users/stephensinniah/workspace/production-sites/touristly/backups"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="spaceship"
@@ -67,8 +67,48 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+# Get branch name in underscores
+# Useful for Git-aware database.yml in Rails
+# Requires prefix as the param (without underscore)
+alias brails="bundle exec rails"
 
-# export MANPATH="/usr/local/man:$MANPATH"
+function gbdb() {
+  app_env=`brails r "print Rails.env"`
+  feature_branch=`echo "$(current_branch)" | tr '-' '_' | tr '/' '_'`
+  project_prefix=$1
+
+  if [[ "$app_env" = 'development' ]]; then
+    app_env="dev"
+  fi
+
+  echo "${project_prefix}_${app_env}_${feature_branch}"
+}
+function mysqlcopydb() {
+# Set up the local profile with mysql_config_editor first
+  DBSNAME=$1
+  DBNAME=$2
+
+  fCreateTable=""
+  fInsertData=""
+  echo "Copying database ... (may take a while ...)"
+  echo "DROP DATABASE IF EXISTS ${DBNAME}" | mysql --login-path=local
+  echo "CREATE DATABASE ${DBNAME}" | mysql --login-path=local
+  for TABLE in `echo "SHOW TABLES" | mysql --login-path=local $DBSNAME | tail -n +2`; do
+          createTable=`echo "SHOW CREATE TABLE ${TABLE}"|mysql --login-path=local -B -r $DBSNAME|tail -n +2|cut -f 2-`
+          fCreateTable="${fCreateTable} ; ${createTable}"
+          insertData="INSERT INTO ${DBNAME}.${TABLE} SELECT * FROM ${DBSNAME}.${TABLE}"
+          fInsertData="${fInsertData} ; ${insertData}"
+  done;
+  echo "$fCreateTable ; $fInsertData" | mysql --login-path=local $DBNAME
+}
+
+# Requires prefix as the param (without underscore)
+function setupgbdb() {
+  BRANCH_DB=$(gbdb $1)
+
+  mysqlcopydb $1_dev_develop $BRANCH_DB
+}
+export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -92,6 +132,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias wp7pd="ssh ubuntu@ec2-13-228-142-178.ap-southeast-1.compute.amazonaws.com"
+alias wp8st="ssh  ubuntu@ec2-52-221-246-33.ap-southeast-1.compute.amazonaws.com"
 alias zshconfig="vim  ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias be="bundle exec"
@@ -125,3 +167,4 @@ DEFAULT_USER=sds
 
 
 source "/Users/stephensinniah/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
+export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
