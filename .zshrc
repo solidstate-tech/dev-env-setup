@@ -70,7 +70,6 @@ source $ZSH/oh-my-zsh.sh
 # Get branch name in underscores
 # Useful for Git-aware database.yml in Rails
 # Requires prefix as the param (without underscore)
-alias brails="bundle exec rails"
 
 function gbdb() {
   app_env=`brails r "print Rails.env"`
@@ -132,11 +131,22 @@ export MANPATH="/usr/local/man:$MANPATH"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias wp7pd="ssh ubuntu@ec2-13-228-142-178.ap-southeast-1.compute.amazonaws.com"
-alias wp8st="ssh  ubuntu@ec2-52-221-246-33.ap-southeast-1.compute.amazonaws.com"
 alias zshconfig="vim  ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias be="bundle exec"
+alias gs="tig status"
+alias gffs="git flow feature start"
+alias gfrs="git flow release start"
+alias gf="git fetch --all --prune"
+alias gc="git checkout"
+alias gp="git push"
+alias ws="cd ~/workspace/sites/"
+alias wa="cd ~/workspace/apps/"
+alias we="cd ~/workspace/experiment/"
+alias djs="python manage.py runserver"
+alias djmm="python manage.py makemigrations"
+alias djm="python manage.py migrate"
+alias djt="py.test"
 alias pg-start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
 alias pg-stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist" 
 export NVM_DIR="/Users/stephensinniah/.nvm"
