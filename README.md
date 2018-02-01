@@ -1,19 +1,22 @@
-#OSX
+## OSX
 
-##Xcode
+### iTerm2
+Download and install [iTerm2](https://www.iterm2.com/). Import profile from folder
+
+### Xcode
 Install [Xcode](https://developer.apple.com/xcode/) from the App store or the Apple developer website.
 
 Then install Xcode command line tools run the command
 
     xcode-select --install  
 
-##Homebrew
+### Homebrew
 ~~~~
 $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 ~~~~
 
-##Oh My Zsh
+### Oh My Zsh
 
 Install oh-my-zsh on top of zsh to get additional functionality
 
@@ -25,6 +28,21 @@ Change default shell to zsh manually
 ~~~~
 chsh -s /usr/local/bin/zsh
 ~~~~
+
+## Fedora
+
+~~~~
+sudo yum groupinstall 'Development Tools' && sudo yum install curl file git python-setuptools
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+
+test -d ~/.linuxbrew && PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
+test -d /home/linuxbrew/.linuxbrew && PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+test -r ~/.bash_profile && echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.bash_profile
+echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.profile
+
+~~~~
+
 
 ### Clone repo
 
@@ -40,9 +58,8 @@ Add to path zsh
 $ echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc
 ~~~~~
 
-##iTerm2
-Download and install [iTerm2](https://www.iterm2.com/). Import profile from folder
 
-
-
-
+## Rust 
+~~~~
+curl https://sh.rustup.rs -sSf | sh
+~~~~
