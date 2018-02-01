@@ -22,3 +22,5 @@ tmux
 watchman
 yarn
 zsh
+terraform
+puma-dev
