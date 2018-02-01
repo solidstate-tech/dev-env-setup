@@ -1,18 +1,13 @@
-ack
 awscli
-caddy
 cookiecutter
 elixir
 emacs
 git
 git-flow
 go
-graphviz
 heroku
 imagemagick
 less
-macvim
-mailhog
 mysql
 nvm
 pgcli
@@ -24,7 +19,6 @@ ripgrep
 tig
 tmate
 tmux
-vim
 watchman
 yarn
 zsh
