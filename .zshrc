@@ -9,7 +9,6 @@ export PROMPT
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/bin:$PATH" plugin=s(git osx)
-eval "$(docker-machine env)"
  #Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 export LC_ALL=en_US.UTF-8
@@ -131,12 +130,15 @@ export MANPATH="/usr/local/man:$MANPATH"
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+alias wp7pd="ssh ubuntu@ec2-13-228-142-178.ap-southeast-1.compute.amazonaws.com"
+alias wp8st="ssh  ubuntu@ec2-52-221-246-33.ap-southeast-1.compute.amazonaws.com"
 alias zshconfig="vim  ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias be="bundle exec"
 alias gs="tig status"
 alias gffs="git flow feature start"
 alias gfrs="git flow release start"
+alias gfrf="git flow release finish"
 alias gf="git fetch --all --prune"
 alias gc="git checkout"
 alias gp="git push"
