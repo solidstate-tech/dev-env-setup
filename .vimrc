@@ -1,5 +1,4 @@
 set nocompatible
-filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -54,3 +53,4 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+set rtp+=/usr/local/opt/fzf
