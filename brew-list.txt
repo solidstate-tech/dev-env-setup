@@ -24,3 +24,6 @@ yarn
 zsh
 terraform
 puma-dev
+node
+openssl
+
