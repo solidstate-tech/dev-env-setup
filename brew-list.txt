@@ -5,7 +5,7 @@ emacs
 git
 git-flow
 go
-heroku
+heroku-toolbelt
 imagemagick
 less
 mysql
@@ -13,9 +13,10 @@ nvm
 pgcli
 postgresql
 pyenv-virtualenv
-qt@5.5
 rbenv
-ripgrep
+ruby-build 
+rbenv-default-gems 
+rbenv-gemset
 tig
 tmate
 tmux
@@ -26,4 +27,6 @@ terraform
 puma-dev
 node
 openssl
+zsh-completions
+
 
