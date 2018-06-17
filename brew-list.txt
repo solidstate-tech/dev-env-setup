@@ -5,7 +5,10 @@ emacs
 git
 git-flow
 go
-heroku
+heroku-toolbelt
+ruby-build
+rbenv-default-gems
+rbenv-gemset
 imagemagick
 less
 mysql
@@ -22,8 +25,8 @@ tmux
 watchman
 yarn
 zsh
+zsh-completions
 terraform
 puma-dev
 node
 openssl
-
