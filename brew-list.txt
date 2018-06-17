@@ -6,9 +6,6 @@ git
 git-flow
 go
 heroku-toolbelt
-ruby-build
-rbenv-default-gems
-rbenv-gemset
 imagemagick
 less
 mysql
@@ -16,9 +13,10 @@ nvm
 pgcli
 postgresql
 pyenv-virtualenv
-qt@5.5
 rbenv
-ripgrep
+ruby-build 
+rbenv-default-gems 
+rbenv-gemset
 tig
 tmate
 tmux
