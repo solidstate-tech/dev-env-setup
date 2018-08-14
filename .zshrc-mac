@@ -4,6 +4,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/:usr/local/pgsql/bin$PATH"
 export PATH="$PATH:$GOPATH/bin"
 export EDITOR='vim'
+PATH=$PATH:/usr/local/opt/go/libexec/bin
 export NVM_DIR="$HOME/.nvm"
 export PROMPT
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
