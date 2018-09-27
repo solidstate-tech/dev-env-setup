@@ -1,0 +1,23 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "telemetry.enableTelemetry": false,
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.settings.mode": "advanced",
+    "workbench.colorTheme": "Tomorrow Night Blue",
+    "editor.fontFamily":  "'Roboto Mono', 'monospace",
+    "editor.tabSize":2,
+    "editor.fontSize": 13,
+    "window.zoomLevel": 1,
+    "github.hosts": [
+        {
+            "host": "https://github.com",
+            "username": "oauth",
+            "token": "system"
+        }
+    ],
+    "git.autofetch": true,
+    "editor.renderWhitespace": "all"
+}
