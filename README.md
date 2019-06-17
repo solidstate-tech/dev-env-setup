@@ -29,22 +29,39 @@ Change default shell to zsh manually
 chsh -s /usr/local/bin/zsh
 ~~~~
 
-## Fedora
+# Ubuntu
 
+## Rust 
 ~~~~
-sudo yum groupinstall 'Development Tools' && sudo yum install curl file git python-setuptools
-
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-
-test -d ~/.linuxbrew && PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
-test -d /home/linuxbrew/.linuxbrew && PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
-test -r ~/.bash_profile && echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.bash_profile
-echo "export PATH='$(brew --prefix)/bin:$(brew --prefix)/sbin'":'"$PATH"' >>~/.profile
-
+curl https://sh.rustup.rs -sSf | sh
 ~~~~
 
+### Rust tools
 
-### Clone repo
+~~~~
+Ripgrep
+cargo install ripgrep
+
+DDH
+cargo install --git https://github.com/darakian/ddh 
+
+EXA
+cargo install exa
+
+~~~~
+
+### Git + Hub
+~~~~
+sudo apt install git
+sudo snap install hub --classic
+~~~~
+
+## Docker
+
+
+## Zsh
+
+## Clone repo
 
 ~~~~
 $ cd ~
@@ -57,9 +74,3 @@ Add to path zsh
 ~~~~~
 $ echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc
 ~~~~~
-
-
-## Rust 
-~~~~
-curl https://sh.rustup.rs -sSf | sh
-~~~~
