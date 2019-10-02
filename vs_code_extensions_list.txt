@@ -1,0 +1,4 @@
+eamodio.gitlens
+gencer.html-slim-scss-css-class-completion
+oderwat.indent-rainbow
+VisualStudioExptTeam.vscodeintellicode
