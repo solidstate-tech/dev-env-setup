@@ -1,0 +1,38 @@
+# ~/.gitconfig — managed by dev-env-setup (stow git).
+
+[include]
+  path = ~/.gitconfig.local
+
+[init]
+  defaultBranch = main
+
+[pull]
+  rebase = true
+
+[rebase]
+  autoStash = true
+  autoSquash = true
+
+[push]
+  default = current
+  autoSetupRemote = true
+
+[core]
+  excludesfile = ~/.gitignore_global
+  editor = nvim
+
+[diff]
+  algorithm = histogram
+  colorMoved = default
+
+[merge]
+  conflictstyle = zdiff3
+
+[alias]
+  st = status
+  co = checkout
+  br = branch
+  ci = commit
+  lg = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(red)%d%Creset %s %C(green)(%cr) %C(blue)<%an>%Creset' --abbrev-commit
+  unstage = reset HEAD --
+  amend = commit --amend --no-edit
