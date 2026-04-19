@@ -1,0 +1,10 @@
+# ~/.config/mise/config.toml — managed by dev-env-setup (stow mise).
+
+[tools]
+node   = "lts"
+ruby   = "3.3"
+java   = "temurin-17"
+python = "3.12"
+
+[settings]
+experimental = true
