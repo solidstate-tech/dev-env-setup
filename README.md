@@ -1,76 +1,43 @@
-## OSX
+# dev-env-setup
 
-### iTerm2
-Download and install [iTerm2](https://www.iterm2.com/). Import profile from folder
+Cross-platform (macOS + Ubuntu) bootstrap for a developer workstation. Make-driven, idempotent, dotfiles managed via GNU stow.
 
-### Xcode
-Install [Xcode](https://developer.apple.com/xcode/) from the App store or the Apple developer website.
+## Quick start
 
-Then install Xcode command line tools run the command
+```sh
+mkdir -p ~/github.com/solidstate-tech
+cd ~/github.com/solidstate-tech
+git clone git@github.com:solidstate-tech/dev-env-setup.git
+cd dev-env-setup
+make all
+```
 
-    xcode-select --install  
+Re-run `make all` after pulling updates — every target is idempotent.
 
-### Homebrew
-~~~~
-$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+## What it installs
 
-~~~~
+- **CLI:** git, gh, stow, mise (language version manager), ripgrep, fd, fzf, lazygit, tree-sitter, bat, eza, jq, yq, htop, tmux, neovim, watchman, shellcheck, shfmt
+- **Languages (via mise):** Node LTS, Ruby 3.3, Java temurin-17, Python 3.12; plus Bun and Rust standalone
+- **Mac apps (via Homebrew cask):** OrbStack, Ghostty, Android Studio, Chrome, Firefox, Arc; Xcode via App Store
+- **Dotfiles (via stow):** zsh, git, tmux, ssh, mise, ghostty, nvim
+- **Editor:** Neovim + LazyVim with full LSP / formatter / DAP / treesitter setup
 
-### Oh My Zsh
+## Documentation
 
-Install oh-my-zsh on top of zsh to get additional functionality
+- [`docs/new-machine.md`](docs/new-machine.md) — day-1 runbook
+- [`docs/secrets.md`](docs/secrets.md) — `~/.secrets.local` schema
+- [`mobile/README.md`](mobile/README.md) — React Native (iOS + Android) toolchain
+- [`docs/superpowers/specs/2026-04-19-dev-env-setup-design.md`](docs/superpowers/specs/2026-04-19-dev-env-setup-design.md) — design rationale
+- [`docs/superpowers/plans/2026-04-19-dev-env-setup.md`](docs/superpowers/plans/2026-04-19-dev-env-setup.md) — implementation plan
 
-~~~~
-    curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
-~~~~
-    
-Change default shell to zsh manually
-~~~~
-chsh -s /usr/local/bin/zsh
-~~~~
+## Make targets
 
-# Ubuntu
+Run `make help` for the full list. The most useful ones:
 
-## Rust 
-~~~~
-curl https://sh.rustup.rs -sSf | sh
-~~~~
-
-### Rust tools
-
-~~~~
-Ripgrep
-cargo install ripgrep
-
-DDH
-cargo install --git https://github.com/darakian/ddh 
-
-EXA
-cargo install exa
-
-~~~~
-
-### Git + Hub
-~~~~
-sudo apt install git
-sudo snap install hub --classic
-~~~~
-
-## Docker
-
-
-## Zsh
-
-## Clone repo
-
-~~~~
-$ cd ~
-$ git clone https://github.com/vvdcect/dev-env-setup.git
-$ cp ~/dev-env-setup/.zshrc  ~/.zshrc
-$ cp ~/dev-env-setup/.vimrc  ~/.vimrc 
-$ source ~/.zshrc
-~~~~
-Add to path zsh
-~~~~~
-$ echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.zshrc
-~~~~~
+| Target | What it does |
+|---|---|
+| `make all` | Bootstrap everything |
+| `make stow-dotfiles` | (Re-)symlink all dotfiles |
+| `make stow-dry-run` | Preview what stow would do |
+| `make doctor` | Verify the environment |
+| `make lint` / `make fmt` | Lint/format shell scripts |
