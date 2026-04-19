@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# bin/bootstrap — first-run prerequisites for `make all`.
+set -euo pipefail
+
+case "$(uname -s)" in
+Darwin)
+  if ! xcode-select -p >/dev/null 2>&1; then
+    echo "Installing Xcode Command Line Tools..."
+    xcode-select --install
+    echo "Re-run 'make all' once the CLT installer finishes."
+    exit 0
+  fi
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+  ;;
+Linux)
+  sudo apt-get update -qq
+  sudo apt-get install -y curl git ca-certificates
+  ;;
+esac
