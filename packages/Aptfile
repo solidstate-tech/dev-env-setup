@@ -1,0 +1,35 @@
+# packages/Aptfile — Ubuntu packages installed via apt-get.
+# Note: tools that lag badly in Ubuntu LTS (mise, lazygit, tree-sitter, fd, neovim)
+# are installed by bin/install-*.sh from upstream releases instead. Ubuntu 22.04
+# ships neovim 0.6.1 which LazyVim rejects (>= 0.9 required).
+
+build-essential
+curl
+git
+gh
+stow
+zsh
+ripgrep
+fzf
+bat
+jq
+htop
+tmux
+shellcheck
+unzip
+zip
+ca-certificates
+libssl-dev
+libreadline-dev
+zlib1g-dev
+libffi-dev
+libyaml-dev
+libbz2-dev
+libsqlite3-dev
+liblzma-dev
+libncursesw5-dev
+pkg-config
+xclip
+tig
+docker.io
+docker-compose-v2
