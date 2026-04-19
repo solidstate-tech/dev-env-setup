@@ -1,0 +1,40 @@
+# packages/Brewfile — Mac packages installed via `brew bundle`.
+# Casks and `mas` lines are Mac-only; ignored by the Linux path.
+# Note: homebrew/bundle was merged into Homebrew core in 4.5.0 (2025-04), no tap needed.
+
+# CLI
+brew "git"
+brew "gh"
+brew "stow"
+brew "mise"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+brew "lazygit"
+brew "tree-sitter"
+brew "bat"
+brew "eza"
+brew "jq"
+brew "yq"
+brew "htop"
+brew "tmux"
+brew "watchman"
+brew "neovim"
+brew "shellcheck"
+brew "shfmt"
+brew "tig"
+brew "mas"
+
+# Fonts
+cask "font-jetbrains-mono-nerd-font"
+
+# GUI / Casks
+cask "orbstack"
+cask "ghostty"
+cask "android-studio"
+cask "google-chrome"
+cask "firefox"
+cask "arc"
+
+# App Store
+mas "Xcode", id: 497799835
