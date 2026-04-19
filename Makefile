@@ -64,3 +64,52 @@ unstow-dotfiles: ## Remove all stow-managed symlinks.
 .PHONY: stow-dry-run
 stow-dry-run: ## Show what stow-dotfiles would do without doing it.
 	stow -n -v -t $(HOME) -d $(REPO) $(STOW_PACKAGES)
+
+# ---- Language toolchain ----
+
+.PHONY: install-mise
+install-mise: ## Install mise and the global tool set from mise/config.toml.
+	bin/install-mise.sh
+	@bash -c 'export PATH="$$HOME/.local/bin:$$PATH"; mise install || true'
+
+.PHONY: install-bun
+install-bun: ## Install bun.
+	bin/install-bun.sh
+
+.PHONY: install-rust
+install-rust: ## Install rustup + stable toolchain.
+	bin/install-rust.sh
+
+.PHONY: install-fonts
+install-fonts: ## Install JetBrains Mono Nerd Font.
+	bin/install-fonts.sh
+
+.PHONY: install-cli-extras
+install-cli-extras: ## Install lazygit, tree-sitter, fresh fd (upstream releases).
+	bin/install-lazygit.sh
+	bin/install-tree-sitter.sh
+	bin/install-fd.sh
+
+.PHONY: install-omz
+install-omz: ## Install oh-my-zsh framework (non-interactive, won't touch our .zshrc).
+	bin/install-omz.sh
+
+.PHONY: install-neovim
+install-neovim: ## Install Neovim >= 0.9 (Linux upstream release; brew on Mac).
+	bin/install-neovim.sh
+
+# ---- Configuration seeding ----
+
+.PHONY: setup-git
+setup-git: ## Prompt for git user.name and user.email if ~/.gitconfig.local missing.
+	bin/setup-git.sh
+
+.PHONY: seed-secrets
+seed-secrets: ## Seed ~/.secrets.local from template if missing.
+	@if [ ! -f $(HOME)/.secrets.local ]; then \
+	  cp templates/secrets.local.template $(HOME)/.secrets.local; \
+	  chmod 600 $(HOME)/.secrets.local; \
+	  echo "Wrote $(HOME)/.secrets.local — fill in your API keys."; \
+	else \
+	  echo "$(HOME)/.secrets.local already exists; leaving it alone."; \
+	fi
