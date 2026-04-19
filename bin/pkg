@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# pkg — install OS packages with the right native package manager.
+# Usage: bin/pkg <package> [<package> ...]
+set -euo pipefail
+
+if [[ $# -eq 0 ]]; then
+  echo "usage: $(basename "$0") <package> [<package> ...]" >&2
+  exit 64
+fi
+
+case "$(uname -s)" in
+Darwin)
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "pkg: Homebrew not installed; run 'make install-pkg-mgr' first" >&2
+    exit 1
+  fi
+  brew install "$@"
+  ;;
+Linux)
+  sudo apt-get update -qq
+  sudo apt-get install -y "$@"
+  ;;
+*)
+  echo "pkg: unsupported OS: $(uname -s)" >&2
+  exit 1
+  ;;
+esac
