@@ -1,0 +1,16 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=UTC
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      sudo curl ca-certificates git build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create a non-root user with passwordless sudo (mirrors a fresh dev machine).
+RUN useradd -m -s /bin/bash dev && echo 'dev ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/dev
+
+USER dev
+WORKDIR /home/dev
+ENV HOME=/home/dev
+ENV PATH="/home/dev/.local/bin:/home/dev/.cargo/bin:${PATH}"

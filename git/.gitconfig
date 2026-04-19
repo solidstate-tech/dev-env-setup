@@ -26,7 +26,8 @@
   colorMoved = default
 
 [merge]
-  conflictstyle = zdiff3
+  # zdiff3 requires git >= 2.35 (Ubuntu 22.04 ships 2.34); use diff3 for compatibility.
+  conflictstyle = diff3
 
 [alias]
   st = status

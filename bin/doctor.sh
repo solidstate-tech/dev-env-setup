@@ -17,9 +17,12 @@ check() {
 }
 
 echo "== Tools on PATH =="
-for cmd in git gh stow mise nvim tmux lazygit fzf fd ripgrep tree-sitter bat jq; do
+# ripgrep installs as 'rg' on Ubuntu (package name is ripgrep, binary is rg).
+# bat installs as 'batcat' on Ubuntu; check whichever name is present.
+for cmd in git gh stow mise nvim tmux lazygit fzf fd rg tree-sitter jq; do
   check "$cmd" command -v "$cmd"
 done
+check "bat (batcat)" bash -c 'command -v bat >/dev/null 2>&1 || command -v batcat >/dev/null 2>&1'
 
 if [ "$(uname -s)" = "Darwin" ]; then
   echo "== Mac-only =="
@@ -35,7 +38,7 @@ check "java 17" bash -c 'mise which java >/dev/null'
 check "python 3.12" bash -c 'mise which python >/dev/null'
 
 echo "== Dotfiles symlinks =="
-for f in ~/.zshrc ~/.zprofile ~/.gitconfig ~/.tmux.conf ~/.config/nvim ~/.config/mise/config.toml; do
+for f in ~/.zshrc ~/.zprofile ~/.gitconfig ~/.tmux.conf ~/.config/nvim ~/.config/mise; do
   check "$f symlinked" test -L "$f"
 done
 

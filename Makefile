@@ -139,12 +139,18 @@ doctor: ## Verify the environment.
 	bin/doctor.sh
 
 .PHONY: all
-all: install-pkg-mgr install-stow install-packages install-omz stow-dotfiles install-mise install-bun install-rust install-fonts install-cli-extras install-neovim setup-git seed-secrets nvim-bootstrap doctor ## Bootstrap everything (idempotent).
+all: install-pkg-mgr install-stow install-packages stow-dotfiles install-omz install-mise install-bun install-rust install-fonts install-cli-extras install-neovim setup-git seed-secrets nvim-bootstrap doctor ## Bootstrap everything (idempotent).
 ifeq ($(UNAME_S),Darwin)
 	@$(MAKE) mobile-bootstrap
 endif
 	@echo "✓ Done. Open a new terminal."
 
 .PHONY: all-no-mobile
-all-no-mobile: install-pkg-mgr install-stow install-packages install-omz stow-dotfiles install-mise install-bun install-rust install-fonts install-cli-extras install-neovim setup-git seed-secrets nvim-bootstrap doctor ## Bootstrap without mobile toolchain (CI / containers).
+all-no-mobile: install-pkg-mgr install-stow install-packages stow-dotfiles install-omz install-mise install-bun install-rust install-fonts install-cli-extras install-neovim setup-git seed-secrets nvim-bootstrap doctor ## Bootstrap without mobile toolchain (CI / containers).
 	@echo "✓ Done."
+
+# ---- Tests ----
+
+.PHONY: smoke
+smoke: ## Run the Linux smoke test in a Docker container.
+	tests/smoke-ubuntu.sh

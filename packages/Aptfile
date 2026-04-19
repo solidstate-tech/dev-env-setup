@@ -31,5 +31,6 @@ libncursesw5-dev
 pkg-config
 xclip
 tig
+fontconfig
 docker.io
 docker-compose-v2

@@ -6,7 +6,8 @@ if [ -d "$HOME/.oh-my-zsh" ]; then
   exit 0
 fi
 
-# RUNZSH=no prevents the installer from launching a zsh subshell.
-# KEEP_ZSHRC=yes prevents it from clobbering our stow-managed ~/.zshrc.
-RUNZSH=no KEEP_ZSHRC=yes sh -c \
+# RUNZSH=no  — do not launch a zsh subshell after install.
+# CHSH=no    — do not call chsh (avoids interactive prompt in containers).
+# KEEP_ZSHRC=yes — do not clobber our stow-managed ~/.zshrc.
+RUNZSH=no CHSH=no KEEP_ZSHRC=yes sh -c \
   "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
